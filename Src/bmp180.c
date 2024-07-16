@@ -1,5 +1,5 @@
 /*
- * bmp18.c
+ * bmp180.c
  *
  *  Created on: Jul 3, 2024
  *      Author: AScai
@@ -22,22 +22,22 @@ bool isBmpConnected(void)
 	return false;
 }
 
-void readCallibrationData(BmpData* bmpData)
+void readCalibrationData(BmpData* bmpData)
 {
-	uint8_t callibData[22] = {0};
-	HAL_I2C_Mem_Read(&hi2c1, BMP_READ_ADDR, BMP_CALIB_ADDR, 1, callibData, 22, HAL_MAX_DELAY);
+	uint8_t calibData[22] = {0};
+	HAL_I2C_Mem_Read(&hi2c1, BMP_READ_ADDR, BMP_CALIB_ADDR, 1, calibData, 22, HAL_MAX_DELAY);
 
-	bmpData->calib.AC1 = ((callibData[0] << 8) | callibData[1]);
-	bmpData->calib.AC2 = ((callibData[2] << 8) | callibData[3]);
-	bmpData->calib.AC3 = ((callibData[4] << 8) | callibData[5]);
-	bmpData->calib.AC4 = ((callibData[6] << 8) | callibData[7]);
-	bmpData->calib.AC5 = ((callibData[8] << 8) | callibData[9]);
-	bmpData->calib.AC6 = ((callibData[10] << 8) | callibData[11]);
-	bmpData->calib.B1 = ((callibData[12] << 8) | callibData[13]);
-	bmpData->calib.B2 = ((callibData[14] << 8) | callibData[15]);
-	bmpData->calib.MB = ((callibData[16] << 8) | callibData[17]);
-	bmpData->calib.MC = ((callibData[18] << 8) | callibData[19]);
-	bmpData->calib.MD = ((callibData[20] << 8) | callibData[21]);
+	bmpData->calib.AC1 = ((calibData[0] << 8) | calibData[1]);
+	bmpData->calib.AC2 = ((calibData[2] << 8) | calibData[3]);
+	bmpData->calib.AC3 = ((calibData[4] << 8) | calibData[5]);
+	bmpData->calib.AC4 = ((calibData[6] << 8) | calibData[7]);
+	bmpData->calib.AC5 = ((calibData[8] << 8) | calibData[9]);
+	bmpData->calib.AC6 = ((calibData[10] << 8) | calibData[11]);
+	bmpData->calib.B1 = ((calibData[12] << 8) | calibData[13]);
+	bmpData->calib.B2 = ((calibData[14] << 8) | calibData[15]);
+	bmpData->calib.MB = ((calibData[16] << 8) | calibData[17]);
+	bmpData->calib.MC = ((calibData[18] << 8) | calibData[19]);
+	bmpData->calib.MD = ((calibData[20] << 8) | calibData[21]);
 }
 
 uint16_t getUTemp(void)
@@ -133,5 +133,5 @@ float getAltitude(BmpData bmpData, int oss)
 
 void bmpInit(BmpData* bmpData)
 {
-	readCallibrationData(bmpData);
+	readCalibrationData(bmpData);
 }
