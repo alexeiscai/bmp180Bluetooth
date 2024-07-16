@@ -1,6 +1,6 @@
-# BMP180 Sensor Library
+# BMP180 Lib
 
-This library provides functions to interface with the BMP180 sensor using an STM32 microcontroller. The BMP180 is a barometric pressure sensor that can measure temperature and pressure, and calculate altitude based on pressure readings. Additionally, in the main.c sensor data is transmited via Bluetooth using HAL_UART_Transmit(), an UART communication is configured for HC-05 module.
+This library provides functions to interface with the BMP180 sensor using an STM32 F103C8T6 microcontroller. The BMP180 is a barometric pressure sensor that can measure temperature and pressure, and calculate altitude based on pressure readings. Additionally, in the main.c sensor data is transmited via Bluetooth using HAL_UART_Transmit(), an UART communication is configured for HC-05 module.
 
 ## Table of Contents
 - [Features](#features)
